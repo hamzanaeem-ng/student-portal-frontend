@@ -1,0 +1,39 @@
+
+<div class="list-container">
+    <div class="list-actions">
+        <button (click)="toggleModal(true)">+</button>
+        <button (click)="callApi()">Call Api</button>
+    </div>
+    <div class="list-grid">
+        <table>
+            <thead>
+              <tr>
+                <th>Row</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of students; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.sex | genderDescription }}</td>
+                <td>
+                  <button type="button" (click)="deleteStudent(i)">Del</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+
+<div id="info-modal" class="modal" [ngStyle]="{'display': showModal ? 'block' : 'none'}">
+  <div class="modal-content">
+    <span class="close" (click)="toggleModal(false)">&times;</span>
+    <student-info-modal (studentInfoEmittter)="addStudent($event)"></student-info-modal>
+  </div>
+</div>

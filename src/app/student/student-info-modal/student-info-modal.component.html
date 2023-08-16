@@ -1,0 +1,20 @@
+<form [formGroup]="studentForm">
+  <div>
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+  <div>
+    <label for="age">Age: </label>
+  <input id="age" type="text" formControlName="age" />
+  </div>
+  <div>
+    <label for="sex">Sex: </label>
+    <select name="sex" id="sex" formControlName="sex">
+      <option value="">--Please choose an option--</option>
+      <option value="1">Male</option>
+      <option value="2">Female</option>
+    </select>
+  </div>
+</form>
+<div *ngIf="showError">Please fill all fields to submit</div>
+<button (click)="submit()">Submit</button>
